@@ -21445,3 +21445,63 @@ var data = {
     }
   ]
 }
+
+function createTable(tableVar, contentArray, nameArray){
+  
+  let trElement = document.createElement('tr');
+
+  tableVar.appendChild(trElement);
+
+  if(nameArray[1] !== '#'){
+    let tdElement = document.createElement('td');
+    let aElement = document.createElement('a');
+    aElement.setAttribute('href', nameArray[1]);
+    aElement.appendChild(document.createTextNode(nameArray[0]));
+    tdElement.appendChild(aElement);
+    trElement.appendChild(tdElement);
+  } else{
+    let tdElement = document.createElement('td');
+    tdElement.appendChild(document.createTextNode(nameArray[0]));
+    trElement.appendChild(tdElement);
+  }
+
+  for(let i = 0; i<contentArray.length; i++){
+    let tdElem = document.createElement('td');
+    let contenido = document.createTextNode(contentArray[i]);
+    tdElem.appendChild(contenido);
+    trElement.appendChild(tdElem);
+  }
+  
+}
+
+let result = data.results[0].members;
+
+let table = document.getElementById('senate-data');
+// TR cada elemento, 
+// TD = Full name + party + state + seniority + percentage of votes with party
+
+// Crear TR + TD por cada uno
+for(let i = 0; i<result.length ;i++){
+  
+  let firstName = result[i].first_name;
+  let middleName;
+  result[i].middle_name ? middleName = result[i].middle_name : middleName = '';
+  let last_name = result[i].last_name;
+  let fullName = firstName + ' ' + middleName + ' ' + last_name;
+
+  let url;
+  result[i].url ? url = result[i].url : url = '#';
+
+  let party = result[i].party;
+  
+  let state = result[i].state;
+
+  let seniority = result[i].seniority;
+
+  let percentageVotes = result[i].votes_with_party_pct + '%';
+
+  let contentArray = [party, state, seniority, percentageVotes];
+  let nameArray = [fullName, url];
+  createTable(table, contentArray, nameArray);
+
+}
