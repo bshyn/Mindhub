@@ -5048,62 +5048,90 @@ var data = {
   ]
 }
 
-function createTable(tableVar, contentArray, nameArray){
-  
-  let trElement = document.createElement('tr');
+result = data.results[0].members;
 
-  tableVar.appendChild(trElement);
+// Seleccionar por party y % votos en party
 
-  if(nameArray[1] !== '#'){
-    let tdElement = document.createElement('td');
-    let aElement = document.createElement('a');
-    aElement.setAttribute('href', nameArray[1]);
-    aElement.appendChild(document.createTextNode(nameArray[0]));
-    tdElement.appendChild(aElement);
-    trElement.appendChild(tdElement);
-  } else{
-    let tdElement = document.createElement('td');
-    tdElement.appendChild(document.createTextNode(nameArray[0]));
-    trElement.appendChild(tdElement);
+var democrats = 0;
+var democratsVotes = 0;
+
+var republicans = 0;
+var republicansVotes = 0;
+
+var independents = 0;
+var independentsVotes = 0;
+
+for(let i=0, n=result.length;i<n; i++){
+
+  if(result[i].party === "D"){
+    democrats++;
+    democratsVotes += result[i].votes_with_party_pct;
   }
 
-  for(let i = 0; i<contentArray.length; i++){
-    let tdElem = document.createElement('td');
-    let contenido = document.createTextNode(contentArray[i]);
-    tdElem.appendChild(contenido);
-    trElement.appendChild(tdElem);
+  if(result[i].party === "R"){
+    republicans++;
+    republicansVotes += result[i].votes_with_party_pct;
   }
-  
+
+  if(result[i].party === "I"){
+    independents++;
+    independentsVotes += result[i].votes_with_party_pct;
+  }
+
 }
 
-let result = data.results[0].members;
+democratsVotes = democratsVotes/democrats;
+republicansVotes = republicansVotes/republicans;
+independentsVotes = independentsVotes/independents;
 
-let table = document.getElementById('senate-data');
-// TR cada elemento, 
-// TD = Full name + party + state + seniority + percentage of votes with party
+function truncar(x) {
+  return Math.trunc(x*100)/100;
+}
 
-// Crear TR + TD por cada uno
-for(let i = 0; i<result.length ;i++){
+senators = Array.from(result);
+
+senators.sort(function compareSenatorsByAttendance(a, b){
+  if(a.missed_votes_pct < b.missed_votes_pct){
+    return -1;
+  } else if(a.missed_votes_pct>b.missed_votes_pct){
+    return 1;
+  } else {
+    return 0;
+  }
+});
+
+document.getElementById('repNumber').innerHTML = republicans.toString();
+document.getElementById('repVotes').innerHTML = truncar(republicansVotes).toString();
+
+document.getElementById('demNumber').innerHTML = democrats.toString();
+document.getElementById('demVotes').innerHTML = truncar(democratsVotes).toString();
+
+document.getElementById('inNumber').innerHTML = independents.toString();
+document.getElementById('inVotes').innerHTML = truncar(independentsVotes).toString();
+
+
+function createTable(tableVar, content){
   
-  let firstName = result[i].first_name;
-  let middleName;
-  result[i].middle_name ? middleName = result[i].middle_name : middleName = '';
-  let last_name = result[i].last_name;
-  let fullName = firstName + ' ' + middleName + ' ' + last_name;
+  let trElement = document.createElement('tr');
+  tableVar.appendChild(trElement);
 
-  let url;
-  result[i].url ? url = result[i].url : url = '#';
+  let tdName = document.createElement('td');
+  tdName.appendChild(document.createTextNode(content.first_name + ' ' + content.last_name));
+  trElement.appendChild(tdName);
 
-  let party = result[i].party;
-  
-  let state = result[i].state;
+  let tdMissedVotes = document.createElement('td');
+  tdMissedVotes.appendChild(document.createTextNode(content.missed_votes));
+  trElement.appendChild(tdMissedVotes);
 
-  let seniority = result[i].seniority;
+  let tdPercentageMissed = document.createElement('td');
+  tdPercentageMissed.appendChild(document.createTextNode(content.missed_votes_pct));
+  trElement.appendChild(tdPercentageMissed);
+}
 
-  let percentageVotes = result[i].votes_with_party_pct + '%';
+for(let i=0; i<10; i++){
+  createTable(document.getElementById('mostEngaged'), senators[i]);
+}
 
-  let contentArray = [party, state, seniority, percentageVotes];
-  let nameArray = [fullName, url];
-  createTable(table, contentArray, nameArray);
-
+for(let i = senators.length-1; i>senators.length-11; i--){
+  createTable(document.getElementById('leastEngaged'), senators[i]);
 }
