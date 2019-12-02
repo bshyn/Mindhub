@@ -63,7 +63,7 @@
   </nav>
 
   <!--Table container-->
-  <div class="container-fluid mt-4">
+  <div class="container-fluid mt-4" id="app">
     <div class="row">
       <div class="col-sm">
         <h2>Party Loyalty</h2>
@@ -85,18 +85,18 @@
           <tbody>
             <tr>
               <td>Republican</td>
-              <td id="repNumber">--</td>
-              <td id="repVotes">--</td>
+              <td>{{republicans.length}}</td>
+              <td>{{republicansVotedWithParty}}</td>
             </tr>
             <tr>
               <td>Democrat</td>
-              <td id="demNumber">--</td>
-              <td id="demVotes">--</td>
+              <td>{{democrats.length}}</td>
+              <td>{{democratsVotedWithParty}}</td>
             </tr>
             <tr>
               <td>Independent</td>
-              <td id="inNumber">--</td>
-              <td id="inVotes">--</td>
+              <td>{{independents.length}}</td>
+              <td>{{independentsVotedWithParty}}</td>
             </tr>
           </tbody>
         </table>
@@ -116,8 +116,10 @@
               <th>% Party Votes</th>
             </tr>
           </thead>
-          <tbody id="leastLoyal">
-
+          <tbody v-for="(member, index) in members" v-if="index<10">
+            <td>{{member.last_name}} {{member.first_name}} {{member.middle_name}}</td>
+            <td>{{Math.trunc((member.total_votes*member.votes_with_party_pct)/100)}}</td>
+            <td>{{member.votes_with_party_pct}}</td>
           </tbody>
         </table>
       </div>
@@ -131,31 +133,35 @@
               <th>% Party Votes</th>
             </tr>
           </thead>
-          <tbody id="mostLoyal">
-
+          <tbody v-for="(member, index) in negMembers" v-if="index<10">
+            <td>{{member.last_name}} {{member.first_name}} {{member.middle_name}}</td>
+            <td>{{Math.trunc((member.total_votes*member.votes_with_party_pct)/100)}}</td>
+            <td>{{member.votes_with_party_pct}}</td>
           </tbody>
         </table>
       </div>
 
     </div>
-    <div>
+  </div>
 
+  <footer class="py-4 bg-light">
+    <div class="container text-center">
+      &copy;2016 TGIF | All Rights Reserved
+    </div>
+  </footer>
 
-      <footer class="py-4 bg-light">
-        <div class="container text-center">
-          &copy;2016 TGIF | All Rights Reserved
-        </div>
-      </footer>
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-      <script src="js/senateLoyalty.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/senateLoyal.js" type="text/javascript"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
 </body>
 
 </html>

@@ -10,26 +10,6 @@ var app = new Vue({
           independentsVotedWithParty: 0 }
 })
 
-function compareSenatorsByAttendance(a, b) {
-  if (a.missed_votes_pct < b.missed_votes_pct) {
-    return -1;
-  } else if (a.missed_votes_pct > b.missed_votes_pct) {
-    return 1;
-  } else {
-    return 0;
-  }
-}
-
-function compareSenatorsByAttendanceNeg(a, b) {
-  if (a.missed_votes_pct < b.missed_votes_pct) {
-    return 1;
-  } else if (a.missed_votes_pct > b.missed_votes_pct) {
-    return -1;
-  } else {
-    return 0;
-  }
-}
-
 function compareSenatorsByLoyalty(a, b){
   if (a.votes_with_party_pct < b.votes_with_party_pct) {
     return -1;
@@ -79,8 +59,8 @@ fetch(url, req)
   .then(data => {members = Array.from(data.results[0].members);
                 negMembers = Array.from(data.results[0].members);
   })
-  .then(() => {members.sort(compareSenatorsByAttendance);
-              negMembers.sort(compareSenatorsByAttendanceNeg);
+  .then(() => {members.sort(compareSenatorsByLoyalty);
+              negMembers.sort(compareSenatorsByLoyaltyNeg);
   })
   .then(() => {republicans = members.filter(member => member.party === 'R');
               democrats = members.filter(member => member.party === 'D');
@@ -104,8 +84,3 @@ fetch(url, req)
                 independentsVotedWithParty = truncar(independentsVotedWithParty/independents.length);
                 app.independentsVotedWithParty = independentsVotedWithParty;  
   })
-
-
-
-
-

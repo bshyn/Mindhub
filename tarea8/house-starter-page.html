@@ -74,7 +74,7 @@
         state is entitled to at least one representative. </p>
       <span style="margin-left: 35%;"></span>
     </div>
-    <table class="table">
+    <table class="table" id="app">
       <thead>
         <tr>
           <th>Name</th>
@@ -84,8 +84,12 @@
           <th>% votes w/Party</th>
         </tr>
       </thead>
-      <tbody id="senate-data">
-
+      <tbody v-for="member in members">
+        <td>{{member.first_name}} {{member.middle_name}} {{member.last_name}}</td> 
+        <td>{{member.party}}</td>
+        <td>{{member.state}}</td>
+        <td>{{member.seniority}}</td>
+        <td>{{member.votes_with_party_pct}}</td>
       </tbody>
     </table>
   </div>
@@ -96,7 +100,8 @@
     </div>
   </footer>
 
-  <script type="text/javascript" src="js/pro-congress-113-house.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script type="text/javascript" src="js/house.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

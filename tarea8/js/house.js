@@ -11,9 +11,9 @@ var app = new Vue({
 })
 
 function compareSenatorsByAttendance(a, b) {
-  if (a.missed_votes_pct < b.missed_votes_pct) {
+  if (a.missed_votes_pct < b.missed_votes_pct && a.total_votes !==0) {
     return -1;
-  } else if (a.missed_votes_pct > b.missed_votes_pct) {
+  } else if (a.missed_votes_pct > b.missed_votes_pct || a.total_votes === 0) {
     return 1;
   } else {
     return 0;
@@ -21,9 +21,9 @@ function compareSenatorsByAttendance(a, b) {
 }
 
 function compareSenatorsByAttendanceNeg(a, b) {
-  if (a.missed_votes_pct < b.missed_votes_pct) {
+  if (a.missed_votes_pct < b.missed_votes_pct || a.total_votes === 0) {
     return 1;
-  } else if (a.missed_votes_pct > b.missed_votes_pct) {
+  } else if (a.missed_votes_pct > b.missed_votes_pct && a.total_votes !==0) {
     return -1;
   } else {
     return 0;
@@ -65,7 +65,7 @@ var independentsVotedWithParty = 0;
 
 var negMembers;
 var members;
-var url = "https://api.propublica.org/congress/v1/113/senate/members.json";
+var url = "https://api.propublica.org/congress/v1/113/house/members.json";
 var req =
 {
   "headers":
