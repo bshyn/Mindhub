@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="author" content="Lee Knowlton" />
+  <meta name="description" content="The NYSL Rules" />
+  <title>NYSL Registration - Northside Youth Soccer League</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui, shrink-to-fit=no">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+
+<body>
+  <div id="container">
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">NYSL</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="index.html">Home</a>
+          <a class="nav-item nav-link" href="about.html">About NYSL</a>
+          <a class="nav-item nav-link active" href="#">Registration <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="info.html">Game Information</a>
+          <a class="nav-item nav-link" href="rules.html">Rules</a>
+          <a class="nav-item nav-link" href="contact.html">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="pageheader">
+      <h1>Registration Form</h1>
+    </div>
+
+    <div id="bodycontent">
+      <form method="get" action="show_data.html">
+
+        <div class="form-group col-md-6">
+          <label for="first_name">Player's First Name:</label>
+          <input type="text" name="first_name" id="first_name" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="last_name">Last Name:</label>
+          <input type="text" name="last_name" id="last_name" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="street_address">Street Address:</label>
+          <input type="text" name="street_address" id="street_address" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="city">City:</label>
+          <input type="text" name="city" id="city" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="zip">Zip Code:</label>
+          <input type="text" name="zip" id="zip" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="birth_date">Birth Date:</label>
+          <input type="text" name="birth_date" id="birth_date" placeholder="(mm/dd/yyyy)" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="parent_guardian">Parent/Guardian Name:</label>
+          <input type="text" name="parent_guardian" id="parent_guardian" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="contact_phone">Contact Phone:</label>
+          <input type="text" name="contact_phone" id="contact_phone" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="contact_email">Contact Email:</label>
+          <input type="text" name="contact_email" id="contact_email" class="form-control" />
+        </div>
+
+        <fieldset class="form-group col-md-6">
+          <label for="gender">Gender</label>
+          <select name="gender" class="form-control" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </fieldset>
+
+        <fieldset class="form-group col-md-6">
+          <label for="grade">Grade:</label>
+          <select name="grade" class="form-control" id="grade">
+            <option value="1st">1st</option>
+            <option value="2nd">2nd</option>
+            <option value="3rd">3rd</option>
+            <option value="4th">4th</option>
+            <option value="5th">5th</option>
+          </select>
+        </fieldset>
+
+        <fieldset class="form-group col-md-6">
+          <legend>Which elementary schools do you live near?</legend>
+          <label for="school_1" class="impinfo">First Closest School:</label>
+          <select name="school_1" id="school_1" class="form-control">
+            <option value="katzenmaier">AJ Katzenmaier</option>
+            <option value="greenbay">Greenbay</option>
+            <option value="yeager">Howard A Yeager</option>
+            <option value="hart">Marjorie P Hart</option>
+            <option value="north">North Elementary</option>
+            <option value="south">South Elementary</option>
+          </select>
+
+          <label for="school_2" class="impinfo">Second Closest School:</label>
+          <select name="school_2" id="school_2" class="form-control">
+            <option value="katzenmaier">AJ Katzenmaier</option>
+            <option value="greenbay">Greenbay</option>
+            <option value="yeager">Howard A Yeager</option>
+            <option value="hart">Marjorie P Hart</option>
+            <option value="north">North Elementary</option>
+            <option value="south">South Elementary</option>
+          </select>
+        </fieldset>
+
+        <fieldset class="form-group col-md-6">
+          <label for="normal_position">What position(s) do you normally play? <small class="form-text text-muted">(check all that apply)</small></label>
+          <select multiple class="form-control" name="normal_position">
+            <option value="forward">Forward</option>
+            <option value="defense">Defense</option>
+            <option value="midfield">Midfield</option>
+            <option value="goalkeeper">Goalkeeper</option>
+          </select>
+        </fieldset>
+
+        <fieldset>
+          <legend>What position(s) do you want to play? <span class="note">(check all that apply)</span></legend>
+          <label for="w_forward">Forward</label>
+          <input type="checkbox" name="want_position" id="w_forward" value="w_forward" />
+          <label for="w_defense">Defense</label>
+          <input type="checkbox" name="want_position" id="w_defense" value="w_defense" />
+          <label for="w_midfield">Midfield</label>
+          <input type="checkbox" name="want_position" id="w_midfield" value="w_midfield" />
+          <label for="w_goalkeeper">Goalkeeper</label>
+          <input type="checkbox" name="want_position" id="w_goalkeeper" value="w_goalkeeper" />
+        </fieldset>
+
+        <label for="uniform" class="impinfo">Already Have a Uniform</label>
+        <input type="checkbox" name="uniform" id="uniform" />
+
+        <fieldset>
+          <legend>Jersey Size:</legend>
+          <span class="uniformchoice">
+            <label for="j_y_small">Youth Small</label>
+            <input type="radio" name="jersey_size" id="j_y_small" value="j_y_small" />
+            <label for="j_y_medium">Youth Medium</label>
+            <input type="radio" name="jersey_size" id="j_y_medium" value="j_y_medium" />
+            <label for="j_y_large">Youth Large</label>
+            <input type="radio" name="jersey_size" id="j_y_large" value="j_y_large" />
+            <label for="j_small">Small</label>
+            <input type="radio" name="jersey_size" id="j_small" value="j_small" />
+            <label for="j_medium">Medium</label>
+            <input type="radio" name="jersey_size" id="j_medium" value="j_medium" />
+            <label for="j_large">Large</label>
+            <input type="radio" name="jersey_size" id="j_large" value="j_large" />
+            <label for="j_x_large">Extra-Large</label>
+            <input type="radio" name="jersey_size" id="j_x_large" value="j_x_large" />
+          </span>
+        </fieldset>
+
+        <fieldset>
+          <legend>Shorts Size:</legend>
+          <span class="uniformchoice">
+            <label for="s_y_small">Youth Small</label>
+            <input type="radio" name="shorts_size" id="s_y_small" value="s_y_small" />
+            <label for="s_y_medium">Youth Medium</label>
+            <input type="radio" name="shorts_size" id="s_y_medium" value="s_y_medium" />
+            <label for="s_y_large">Youth Large</label>
+            <input type="radio" name="shorts_size" id="s_y_large" value="s_y_large" />
+            <label for="s_small">Small</label>
+            <input type="radio" name="shorts_size" id="s_small" value="s_small" />
+            <label for="s_medium">Medium</label>
+            <input type="radio" name="shorts_size" id="s_medium" value="s_medium" />
+            <label for="s_large">Large</label>
+            <input type="radio" name="shorts_size" id="s_large" value="s_large" />
+            <label for="s_x_large">Extra-Large</label>
+            <input type="radio" name="shorts_size" id="s_x_large" value="s_x_large" />
+          </span>
+        </fieldset>
+
+        <h3>Permission to Play</h3>
+        <div class="contract">
+          <p>
+            I, the parent or guardian of the minor registrant, agree that the registrant and I will abide by all the
+            rules of the Northside Youth Soccer League (NYSL). In recognizing the possibility of physical injury
+            associated with soccer and in consideration for the "League" accepting the registrant for its soccer
+            programs and activities, I hereby release, discharge, and/or otherwise indemnify NYSL, their employees
+            and associated personnel and volunteers, including the facilities used for practices and games, against
+            any claim by or on behalf of the registrant as a result of the registrant's participation in the program
+            and/or being transported to or from NYSL sponsored activities, which transportation.
+          </p>
+          <p>
+            By entering my name below, I hereby agree and authorize the above. In addition, by entering my name
+            below, I also acknowledge that I have read the cancellation policy and agree to its terms.
+          </p>
+          <p>
+            <label for="signature">Parent/Guardian Signature:</label>
+            <input type="text" name="signature" id="signature" /><br>
+            <label for="sig_date">Date:</label>
+            <input type="text" name="sig_date" id="sig_date" /><br>
+          </p>
+        </div>
+        <p><input type="submit" /></p>
+
+      </form>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBdNw4gmUIw7_6OYanKA-ylnGhbeFFyIko",
+      authDomain: "hola-mundo-20129.firebaseapp.com",
+      databaseURL: "https://hola-mundo-20129.firebaseio.com",
+      projectId: "hola-mundo-20129",
+      storageBucket: "hola-mundo-20129.appspot.com",
+      messagingSenderId: "1026476105135",
+      appId: "1:1026476105135:web:2f7119cdb31e17b338635a",
+      measurementId: "G-LZF41PZS6L"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+</body>
+
+</html>
