@@ -33,13 +33,13 @@ let game9 = new Game('9/29', 'U4', 'U5', 'Greenbay', '9:30 a.m.');
 
 let games = [game1, game2, game3, game4, game5, game6, game7, game8, game9];
 
-/*var app = new Vue({
+var app = new Vue({
   el: '#app',
   data: {
     games: [],
     show: false
   }
-})*/  
+})
 
 //Get games by team
 
@@ -59,3 +59,10 @@ function getGamesByDate(date){
   app.show = true;
 }
 
+function getGamesByLocation(location){
+  let result = games.filter(
+    game => game.location === location
+  )
+  app.games = result;
+  app.show = true;
+}

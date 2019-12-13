@@ -12,17 +12,17 @@
   padding: 0px !important;
 }
 
-#screen{
-  height: 100% !important;
-  width: 100% !important;
+#homescreen{
+  height: 100vh !important;
+  width: 100vw !important;
   margin: 0px !important;
   padding: 0px !important;
 }
 
 
 #button{
-  height: 100% !important;
-  width: 100% !important;
+  height: 100vh !important;
+  width: 100vw !important;
   margin: 0px !important;
   padding: 0px !important;
 }
